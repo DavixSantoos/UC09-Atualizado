@@ -18,7 +18,7 @@ async function carregarProdutos() {
                 <td>
                     <a href="./detalhes.html?id=${produto.id}">Detalhes</a>
                     <a href="#">Editar</a>
-                    <a href="#">Excluir</a>
+                    <a href="./excluir.html?id=${produto.id}">Excluir</a>
                 </td>
             `      
             tbody.appendChild(tr)   
