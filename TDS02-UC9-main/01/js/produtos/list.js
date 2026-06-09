@@ -1,7 +1,7 @@
 async function carregarProdutos() {
     try {
-        const resposnse = await fetch(`${API_BASE_URL}/produtos`);
-        const produtos = await resposnse.json();
+        const response = await fetch(`${API_BASE_URL}/produtos`);
+        const produtos = await response.json();
         console.log(produtos);
 
         const tbody = document.getElementById("tabela-produtos");
@@ -17,7 +17,7 @@ async function carregarProdutos() {
                 <td>${produto.fornecedorId}</td>
                 <td>
                     <a href="./detalhes.html?id=${produto.id}">Detalhes</a>
-                    <a href="#">Editar</a>
+                    <a href="./form.html?id=${produto.id}">Editar</a>
                     <a href="./excluir.html?id=${produto.id}">Excluir</a>
                 </td>
             `      
