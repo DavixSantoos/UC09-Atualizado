@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Estoque</title>
     <link rel="stylesheet" href="css/global.css">
+    <script src="js/config.js"></script>
+    <script src="js/login.js" defer></script>
 </head>
 <body>
     <header>
         <h1>Controle de Estoque</h1>
-        <nav>
+        <nav id="Nav-menu">
             <a href="index.html">Home</a>            
             <a href="./html/produtos/index.html">Produtos</a>            
             <a href="./html/fornecedores/index.html">Fornecedores</a>            
@@ -23,14 +25,14 @@
     <main>
         <div id="auth-section">
             <h2>Login</h2>
-            <form>
+            <form id="login-form">
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" name="email" required>
+                    <input type="string" id="email" name="email" required>
                 </div>
                 <div>
                     <label for="senha">Senha</label>
-                    <input type="password" name="senha" required>
+                    <input type="password" id="senha"   name="senha" required>
                 </div>
                 <button type="submit" style="margin-top: 10;">Entrar</button>
             </form>
