@@ -1,13 +1,12 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
+const token = localStorage.getItem("token");    
 const authSection = document.getElementById("auth-section");
 const mainSection = document.getElementById("main-content");
 const navMenu = document.getElementById("Nav-menu");
 const btnLogout = document.getElementById("btn-logout");
 
    
-    if(false) {
+    if(token) {
         authSection.style.display = 'none';
         mainSection.style.display = 'block';
         navMenu.style.display = 'inline-block';
@@ -28,21 +27,33 @@ const btnLogout = document.getElementById("btn-logout");
             const email = document.getElementById("email").value;
             const senha = document.getElementById("senha").value;
 
-            try{
-               const response =  await fetch(API_BASE_URL + '/Usuarios/autenticar',{
+             try {
+                const response = await fetch(API_BASE_URL + '/Usuarios/autenticar', {
                     method: 'POST',
-                    headers: {'Content-Type' : 'appication/json'},
-                    body: JSON.stringify({email,senha})
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({email, senha})
                 });
-                console.log(await response.json());
 
-            }catch(error){
-                console.log(error);
+                if(response.ok){
+                        const data = await response.json();
+                        localStorage.setItem('token', data.token);
+                        localStorage.setItem('usuario',JSON.stringify(data.usuario));
+                        window.location.reload();
+                    } else {
+                        const errorData = await response.json();
+                        console.log(errorData)
+                    }
+
+            } catch (err) {
+                console.log(err);
             }
 
-        });
+             
+        });    
    }
-
-
-
 });
+ function logout(){
+                localStorage.removeItem('token');
+                localStorage.removeItem('usuario');
+                window.location.reload();
+             } 
